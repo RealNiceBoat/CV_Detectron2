@@ -1,0 +1,8 @@
+model_old.ipynb
+.vscode
+__pycache__
+ckpts/*
+!ckpts/last_checkpoint
+!ckpts/*.json
+til2020/train
+til2020/val
