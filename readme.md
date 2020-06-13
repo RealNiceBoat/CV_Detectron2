@@ -9,10 +9,9 @@ pip install opencv-python
 ## Description
 Hey, I put everything you need to know in [model.ipynb](model.ipynb). But in short:
 1. Put the train & val data folders back into [til2020](til2020). (I already fixed the annotation json)
-2. Download the model from [Google Drive](https://drive.google.com/file/d/1nEyJVzAy3yB7v8aEUthVR1kMpuZK4_Lo/view?usp=sharing) and place it into [ckpts](ckpts).
+2. Download the model from [Google Drive](https://drive.google.com/file/d/1xPaXsHhVQ-aW2t5Jr8tLXI-Z_opwajVQ/view?usp=sharing) and place it into [ckpts](ckpts).
 3. To add more augmentation components, see [pipeline.py](pipeline.py).
 4. Run the [notebook](model.ipynb).
-btw, I am still training the model, its currently at roughly only 5 epochs out of a planned 20.
 
 The library used is Facebook's [Detectron2](https://github.com/facebookresearch/detectron2). The model is [R101-FPN](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md#faster-r-cnn) aka ResNet-101 with Feature Pyramid Network. As such, we need to cite:
 
@@ -30,15 +29,19 @@ The library used is Facebook's [Detectron2](https://github.com/facebookresearch/
 TIL pycoco evaluation results:
 | IoU=0.20:0.50 | IoU=0.20 | IoU=0.30 | IoU=0.40 | IoU=0.50 |
 |:-------------:|:--------:|:--------:|:--------:|:--------:|
-|     0.621     |  0.643   |   0.632  |   0.617  |   0.584  |
+|     0.654     |  0.667   |   0.662  |   0.653  |   0.630  |
 
-[06/13 00:38:15 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
+[06/13 20:35:19 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
 |   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl  |
 |:------:|:------:|:------:|:------:|:------:|:-----:|
-| 62.100 | 64.326 | 63.176 | 61.692 | 58.396 | 0.000 |
+| 65.410 | 66.672 | 66.171 | 65.322 | 62.996 | 0.000 |
 
-[06/13 00:38:15 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+[06/13 20:35:19 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
 | category   | AP     | category   | AP     | category   | AP     |
 |:-----------|:-------|:-----------|:-------|:-----------|:-------|
-| tops       | 47.403 | trousers   | 48.898 | outerwear  | 72.674 |
-| dresses    | 95.458 | skirts     | 46.069 |            |        |
+| tops       | 53.308 | trousers   | 46.216 | outerwear  | 77.182 |
+| dresses    | 95.433 | skirts     | 54.913 |            |        |
+
+## Model History
+1. Trained for 17 epochs with full augmentation pipeline (currently commented out in pipeline.py). Batch-size of 1.
+2. Trained for 0.25 epoch without augmentation, batch-size of 3 (loss decreases faster).
