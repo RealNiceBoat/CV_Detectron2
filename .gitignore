@@ -6,3 +6,4 @@ ckpts/*
 !ckpts/*.json
 til2020/train
 til2020/val
+til2020/CV_interim_images
