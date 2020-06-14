@@ -38,15 +38,12 @@ class DatasetPipeline:
 
         if is_train:
             self.pipeline.append(T.ResizeShortestEdge(cfg.INPUT.MIN_SIZE_TRAIN,cfg.INPUT.MAX_SIZE_TRAIN,cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING))
-            self.pipeline.append(T.RandomFlip(vertical=False,horizontal=True))
-            '''
-            if cfg.INPUT.CROP.ENABLED: self.crop_gen = T.RandomCrop("relative_range",cfg.INPUT.CROP.SIZE)
-
-            self.pipeline.append(T.ResizeShortestEdge(cfg.INPUT.MIN_SIZE_TRAIN,cfg.INPUT.MAX_SIZE_TRAIN,cfg.INPUT.MIN_SIZE_TRAIN_SAMPLING))            
             
-            self.pipeline.append(T.RandomFlip(vertical=True,horizontal=False))
+            self.pipeline.append(T.RandomFlip(vertical=False,horizontal=True))
 
-            self.pipeline.append(T.RandomRotation(cfg.INPUT.RAND_ROTATION))
+            if cfg.INPUT.CROP.ENABLED: self.cropper = T.RandomCrop("relative_range",cfg.INPUT.CROP.SIZE)
+
+            #self.pipeline.append(T.RandomRotation(cfg.INPUT.RAND_ROTATION))
 
             self.pipeline.append(T.RandomContrast(*cfg.INPUT.RAND_CONTRAST))
 
@@ -54,8 +51,7 @@ class DatasetPipeline:
 
             self.pipeline.append(T.RandomSaturation(*cfg.INPUT.RAND_SATURATION))
 
-            self.pipeline.append(T.RandomApply(SharpenTransform(level=9),prob=0.05))
-            '''
+            #self.pipeline.append(T.RandomApply(SharpenTransform(level=9),prob=0.05))
         else:
             self.pipeline.append(T.ResizeShortestEdge(cfg.INPUT.MIN_SIZE_TEST,cfg.INPUT.MAX_SIZE_TEST,"choice"))
         self.logger.info(f"Pipeline: {self.pipeline}")
