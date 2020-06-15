@@ -29,19 +29,22 @@ The library used is Facebook's [Detectron2](https://github.com/facebookresearch/
 TIL pycoco evaluation results:
 | IoU=0.20:0.50 | IoU=0.20 | IoU=0.30 | IoU=0.40 | IoU=0.50 |
 |:-------------:|:--------:|:--------:|:--------:|:--------:|
-|     0.654     |  0.667   |   0.662  |   0.653  |   0.630  |
+|     0.687     |  0.701   |   0.694  |   0.686  |   0.665  |
 
 [06/13 20:35:19 d2.evaluation.coco_evaluation]: Evaluation results for bbox: 
 |   AP   |  AP50  |  AP75  |  APs   |  APm   |  APl  |
 |:------:|:------:|:------:|:------:|:------:|:-----:|
-| 65.410 | 66.672 | 66.171 | 65.322 | 62.996 | 0.000 |
+| 68.744 | 70.114 | 69.380 | 68.594 | 66.490 | 0.000 |
 
-[06/13 20:35:19 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
+[06/15 15:51:35 d2.evaluation.coco_evaluation]: Per-category bbox AP: 
 | category   | AP     | category   | AP     | category   | AP     |
 |:-----------|:-------|:-----------|:-------|:-----------|:-------|
-| tops       | 53.308 | trousers   | 46.216 | outerwear  | 77.182 |
-| dresses    | 95.433 | skirts     | 54.913 |            |        |
+| tops       | 58.582 | trousers   | 49.809 | outerwear  | 78.678 |
+| dresses    | 96.898 | skirts     | 59.754 |            |        |
 
-## Model History
-1. Trained for 17 epochs with full augmentation pipeline (currently commented out in pipeline.py). Batch-size of 1.
-2. Trained for 0.25 epoch without augmentation, batch-size of 3 (loss decreases faster).
+## Parameters used
+Trained for ~4.5 epochs
+- LR of 0.00025
+- Cropping enabled (0.7,0.9)
+- Contrast, Brightness & Saturation enabled (all 0.8 to 1.2).
+- Repeat threshold set to 0.5
