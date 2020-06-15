@@ -25,6 +25,13 @@ The library used is Facebook's [Detectron2](https://github.com/facebookresearch/
 }
 ```
 
+# Possible Prediction Bugs
+1. cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST should be 0.0 (fixed)
+2. Are the output boxes supposed to be rescaled rather than original img dimensions? (unconfirmed)
+3. Image color channels loaded in reverse. Use: cv2.imread(path) (fixed)
+4. Image ids not loaded from metafile but interpreted from filename (unconfirmed)
+5. class ids not remapped to category ids. Use: MetadataCatalog(name).thing_dataset_id_to_contiguous_id (not fixed)
+
 ## Results
 TIL pycoco evaluation results:
 | IoU=0.20:0.50 | IoU=0.20 | IoU=0.30 | IoU=0.40 | IoU=0.50 |
