@@ -25,8 +25,8 @@ The library used is Facebook's [Detectron2](https://github.com/facebookresearch/
 }
 ```
 
-# Possible Prediction Bugs
-1. cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST should be 0.0 (fixed)
+## Possible Prediction Bugs
+1. cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST determines how the box suppression threshold. 1 means all are gone, 0 means even 3% predictions appear. Set wisely like 0.5. (unfixed)
 2. Are the output boxes supposed to be rescaled rather than original img dimensions? (unconfirmed)
 3. Image color channels loaded in reverse. Use: cv2.imread(path) (fixed)
 4. Image ids not loaded from metafile but interpreted from filename (unconfirmed)
