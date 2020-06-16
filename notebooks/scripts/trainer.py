@@ -4,12 +4,14 @@ import torch
 logger = logging.getLogger('detectron2')
 
 #uses whatever pycocotools is installed, make sure it is the TIL one
-def do_test(cfg,model):
+def do_test(cfg,model,dataset_name=None):
     from detectron2.evaluation import COCOEvaluator, inference_on_dataset
     from detectron2.data import build_detection_test_loader
-    evaluator = COCOEvaluator(cfg.DATASETS.TEST[0],cfg,False)
-    val_loader = build_detection_test_loader(cfg,cfg.DATASETS.TEST[0])
+    dataset_name = cfg.DATASETS.TEST[0] if dataset_name is None else dataset_name
+    evaluator = COCOEvaluator(dataset_name,cfg,False,output_dir=cfg.OUTPUT_DIR)
+    val_loader = build_detection_test_loader(cfg,dataset_name)
     inference_on_dataset(model,val_loader,evaluator)
+    return evaluator
 
 def do_eval(cfg,model):
     from detectron2.data import build_detection_test_loader
