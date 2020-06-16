@@ -7,11 +7,13 @@ pip install opencv-python
 ```
 
 ## Description
-Hey, I put everything you need to know in [model.ipynb](model.ipynb). But in short:
-1. Put the train & val data folders back into [til2020](til2020). (I already fixed the annotation json)
+Hey, I put everything you need to know in [model.ipynb](notebooks/model_til_pure.ipynb). But in short:
+1. Put the train & val data folders back into [til2020](data/til2020). (I already fixed the annotation json)
 2. Download the model from [Google Drive](https://drive.google.com/file/d/1NAqYvcLSyLfB8IV8DuXoiDmZrW857byV/view?usp=sharing) and place it into [ckpts](ckpts).
-3. To add more augmentation components, see [pipeline.py](pipeline.py).
-4. Run the [notebook](model.ipynb).
+3. To add more augmentation components, see [pipeline.py](notebooks/scripts/pipeline.py).
+4. Run the [notebook](notebooks/model.ipynb).
+
+I will update the readme later with regards to the Modanet and DeepFashion trained model as well as mixed datasets.
 
 The library used is Facebook's [Detectron2](https://github.com/facebookresearch/detectron2). The model is [R101-FPN](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md#faster-r-cnn) aka ResNet-101 with Feature Pyramid Network. As such, we need to cite:
 
@@ -26,11 +28,11 @@ The library used is Facebook's [Detectron2](https://github.com/facebookresearch/
 ```
 
 ## Possible Prediction Bugs
-1. cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST determines how the box suppression threshold. 1 means all are gone, 0 means even 3% predictions appear. Set wisely like 0.5. (unfixed)
+1. cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST determines how the box suppression threshold. 1 means all are gone, 0 means even 3% predictions appear. Set wisely like 0.5. (copying COCOEvaluator)
 2. Are the output boxes supposed to be rescaled rather than original img dimensions? (unconfirmed)
 3. Image color channels loaded in reverse. Use: cv2.imread(path) (fixed)
-4. Image ids not loaded from metafile but interpreted from filename (unconfirmed)
-5. class ids not remapped to category ids. Use: MetadataCatalog(name).thing_dataset_id_to_contiguous_id (not fixed)
+4. Image ids not loaded from metafile but interpreted from filename (fixed)
+5. class ids not remapped to category ids. Use: MetadataCatalog(name).thing_dataset_id_to_contiguous_id (copying COCOEvaluator)
 
 ## Results
 TIL pycoco evaluation results:
