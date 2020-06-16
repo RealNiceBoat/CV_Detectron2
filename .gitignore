@@ -10,3 +10,4 @@ data/til2020/CV_interim_images/*
 data/modanet/train/*
 data/modanet/val/*
 data/modanet/*.json
+data/coco/*

@@ -43,15 +43,16 @@ class DatasetPipeline:
 
             if cfg.INPUT.CROP.ENABLED: self.cropper = T.RandomCrop("relative_range",cfg.INPUT.CROP.SIZE)
 
-            #self.pipeline.append(T.RandomRotation(cfg.INPUT.RAND_ROTATION))
+            if cfg.INPUT.ENABLE_MINOR_AUGMENTS:
+                #self.pipeline.append(T.RandomRotation(cfg.INPUT.RAND_ROTATION))
 
-            #self.pipeline.append(T.RandomContrast(*cfg.INPUT.RAND_CONTRAST))
+                self.pipeline.append(T.RandomContrast(*cfg.INPUT.RAND_CONTRAST))
 
-            #self.pipeline.append(T.RandomBrightness(*cfg.INPUT.RAND_BRIGHTNESS))
+                self.pipeline.append(T.RandomBrightness(*cfg.INPUT.RAND_BRIGHTNESS))
 
-            #self.pipeline.append(T.RandomSaturation(*cfg.INPUT.RAND_SATURATION))
+                self.pipeline.append(T.RandomSaturation(*cfg.INPUT.RAND_SATURATION))
 
-            #self.pipeline.append(T.RandomApply(SharpenTransform(level=9),prob=0.05))
+                #self.pipeline.append(T.RandomApply(SharpenTransform(level=9),prob=0.05))
         else:
             self.pipeline.append(T.ResizeShortestEdge(cfg.INPUT.MIN_SIZE_TEST,cfg.INPUT.MAX_SIZE_TEST,"choice"))
         self.logger.info(f"Pipeline: {self.pipeline}")

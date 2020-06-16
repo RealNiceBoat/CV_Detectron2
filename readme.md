@@ -9,7 +9,7 @@ pip install opencv-python
 ## Description
 Hey, I put everything you need to know in [model.ipynb](notebooks/model_til_pure.ipynb). But in short:
 1. Put the train & val data folders back into [til2020](data/til2020). (I already fixed the annotation json)
-2. Download the model from [Google Drive](https://drive.google.com/file/d/1NAqYvcLSyLfB8IV8DuXoiDmZrW857byV/view?usp=sharing) and place it into [ckpts](ckpts).
+2. Download the model from [Google Drive](https://drive.google.com/file/d/1NAqYvcLSyLfB8IV8DuXoiDmZrW857byV/view?usp=sharing) and place it into [final_ckpts](final_ckpts).
 3. To add more augmentation components, see [pipeline.py](notebooks/scripts/pipeline.py).
 4. Run the [notebook](notebooks/model.ipynb).
 
