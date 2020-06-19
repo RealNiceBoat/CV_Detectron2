@@ -1,3 +1,6 @@
+'''
+Modified from source available at the deepfashion2 github repo to exclude some data, remap categories and some other stuff
+'''
 import json
 from PIL import Image
 import numpy as np

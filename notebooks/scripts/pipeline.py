@@ -1,3 +1,6 @@
+'''
+This is the logic for the custom dataset processor in order to implement pipeline components.
+'''
 import copy
 import logging
 import numpy as np

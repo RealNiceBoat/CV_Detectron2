@@ -7,14 +7,14 @@ pip install opencv-python
 ```
 
 ## Description
-Hey, I put everything you need to know in [model.ipynb](notebooks/model_til_pure.ipynb). But in short:
+See [this notebook](notebooks/model_til_pure.ipynb) for a overview of our training process. For the pure TIL model, here is quick setup guide:
 1. Put the train & val data folders back into [til2020](data/til2020). (I already fixed the annotation json)
 2. Download the model from [Google Drive](https://drive.google.com/file/d/1NAqYvcLSyLfB8IV8DuXoiDmZrW857byV/view?usp=sharing) and place it into [final_ckpts](final_ckpts).
 3. To add more augmentation components, see [pipeline.py](notebooks/scripts/pipeline.py).
-4. Run the [notebook](notebooks/model.ipynb).
 
-I will update the readme later with regards to the Modanet and DeepFashion trained model as well as mixed datasets.
+Most of the important logic has been extracted into their own python files which can be found in the [scripts folder](notebooks/scripts), which also contains some utility scripts. There may also be other utility scripts scattered elsewhere for the purpose of wrangling datasets.
 
+## Citations
 The library used is Facebook's [Detectron2](https://github.com/facebookresearch/detectron2). The model is [R101-FPN](https://github.com/facebookresearch/detectron2/blob/master/MODEL_ZOO.md#faster-r-cnn) aka ResNet-101 with Feature Pyramid Network. As such, we need to cite:
 
 ```BibTeX
@@ -24,6 +24,26 @@ The library used is Facebook's [Detectron2](https://github.com/facebookresearch/
   title =        {Detectron2},
   howpublished = {\url{https://github.com/facebookresearch/detectron2}},
   year =         {2019}
+}
+```
+
+Ultimately, we found the TIL dataset insufficient and after researching and experimenting with multiple datasets, we stumbled across Modanet, annotations based on the Paper Doll dataset that were of extremely high quality, allowing our model to reach much greater AP scores.
+
+```BibTeX
+@inproceedings{zheng/2018acmmm,
+  author       = {Shuai Zheng and Fan Yang and M. Hadi Kiapour and Robinson Piramuthu},
+  title        = {ModaNet: A Large-Scale Street Fashion Dataset with Polygon Annotations},
+  booktitle    = {ACM Multimedia},
+  year         = {2018},
+}
+```
+
+```BibTeX
+@inproceedings{yamaguchi/iccv2013,
+  author =       {Kota Yamaguchi and M. Hadi Kiapour and Tamara L. Berg},
+  title =        {Paper Doll Parsing: Retrieving Similar Styles to Parse Clothing Items},
+  booktitle    = {ICCV 2013},
+  year =         {2013}
 }
 ```
 
@@ -60,10 +80,3 @@ TIL pycoco evaluation results:
 |:-----------|:-------|:-----------|:-------|:-----------|:-------|
 | tops       | 58.582 | trousers   | 49.809 | outerwear  | 78.678 |
 | dresses    | 96.898 | skirts     | 59.754 |            |        |
-
-## Parameters used
-Trained for ~4.5 epochs
-- LR of 0.00025
-- Cropping enabled (0.7,0.9)
-- Contrast, Brightness & Saturation enabled (all 0.8 to 1.2).
-- Repeat threshold set to 0.5

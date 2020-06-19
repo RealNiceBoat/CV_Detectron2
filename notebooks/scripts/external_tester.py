@@ -1,3 +1,6 @@
+'''
+Was used to be absolutely sure the output predictions COCO format was correct
+'''
 import subprocess
 import sys
 

@@ -1,3 +1,6 @@
+'''
+Logic for a validation loss based checkpointer, which detectron2 did not ship with.
+'''
 from fvcore.common.checkpoint import PeriodicCheckpointer
 from detectron2.engine import HookBase
 import logging

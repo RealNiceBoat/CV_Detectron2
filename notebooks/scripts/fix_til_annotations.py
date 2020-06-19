@@ -1,3 +1,7 @@
+'''
+This is meant specifically for the TIL dataset, which is COCO-like with a few small mistakes.
+'''
+
 #Paths
 from pathlib import Path
 base_folder = Path('.')
