@@ -1,7 +1,7 @@
 .vscode
 __pycache__
 ckpts/*
-final_ckpts/*
+final_ckpts/*.pth
 !ckpts/last_checkpoint
 data/til2020/train/*
 data/til2020/val/*

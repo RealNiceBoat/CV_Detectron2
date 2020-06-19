@@ -1,3 +1,6 @@
+'''
+Attempted to merge all the datasets, out of RAM while creating the dict. No way to handle unless someone feels like investigating JSON streamed output.
+'''
 import json
 import pandas as pd
 import os
