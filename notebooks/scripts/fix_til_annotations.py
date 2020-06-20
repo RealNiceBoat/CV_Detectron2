@@ -10,8 +10,8 @@ train_imgs_folder = data_folder/'train'
 train_annotations = data_folder/'train.json'
 val_imgs_folder = data_folder/'val'
 val_annotations = data_folder/'val.json'
-test_imgs_folder = data_folder/'CV_interim_images'
-test_annotations = data_folder/'CV_interim_evaluation.json'
+test_imgs_folder = data_folder/'CV_final_images'
+test_annotations = data_folder/'CV_final_evaluation.json'
 
 from PIL import Image
 import json

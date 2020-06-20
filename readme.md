@@ -47,6 +47,17 @@ Ultimately, we found the TIL dataset insufficient and after researching and expe
 }
 ```
 
+One last dataset we used was the DeepFashion2 Dataset. It is a very large dataset, and unfortunately too good to be true, being of low quality as evidenced by our tried and tested models being unable to train well on it.
+
+```BibTeX
+@article{DeepFashion2,
+  author = {Yuying Ge and Ruimao Zhang and Lingyun Wu and Xiaogang Wang and Xiaoou Tang and Ping Luo},
+  title={A Versatile Benchmark for Detection, Pose Estimation, Segmentation and Re-Identification of Clothing Images},
+  journal={CVPR},
+  year={2019}
+}
+```
+
 ## R101-FPN COCO keypoints finetuned purely on ModaNet
 TIL pycoco evaluation results:
 | IoU=0.20:0.50 | IoU=0.20 | IoU=0.30 | IoU=0.40 | IoU=0.50 |
