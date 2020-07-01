@@ -9,7 +9,7 @@ pip install opencv-python
 ## Description
 See [this notebook](notebooks/model_til_pure.ipynb) for a overview of our training process. For the pure TIL model, here is quick setup guide:
 1. Put the train & val data folders back into [til2020](data/til2020). (I already fixed the annotation json)
-2. Download the model from [Google Drive](https://drive.google.com/file/d/1NAqYvcLSyLfB8IV8DuXoiDmZrW857byV/view?usp=sharing) and place it into [final_ckpts](final_ckpts).
+2. Download the model from [Google Drive](https://drive.google.com/file/d/1vJCNwcsBuQptZ4dJRZdwpzOEE7cYDRTc/view?usp=sharing) and place it into [final_ckpts](final_ckpts).
 3. To add more augmentation components, see [pipeline.py](notebooks/scripts/pipeline.py).
 
 Most of the important logic has been extracted into their own python files which can be found in the [scripts folder](notebooks/scripts), which also contains some utility scripts. There may also be other utility scripts scattered elsewhere for the purpose of wrangling datasets.
